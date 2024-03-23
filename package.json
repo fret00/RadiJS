@@ -1,0 +1,22 @@
+{
+  "name": "tbxjs",
+  "version": "1.0.0",
+  "description": "Small Native JS framework for Componential approach based on classes",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fret00/TbxJS.git"
+  },
+  "author": "Konstantin Esipov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fret00/TbxJS/issues"
+  },
+  "homepage": "https://github.com/fret00/TbxJS#readme",
+  "dependencies": {
+    "sanitize-html": "^2.13.0"
+  }
+}
