@@ -1,5 +1,4 @@
 import sanitizeHtml from 'sanitize-html';
-// import components from "./components";
 import ui from '.';
 
 export default class TbxComponent {

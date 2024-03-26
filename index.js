@@ -1,5 +1,6 @@
 import components from "./components/index.js";
 import TbxComponent from "./component";
+import TbxGroupComponent from "./group.js";
 
 let initializedComponents = {};
 let initializedComponentsIndex = 0;
@@ -42,7 +43,7 @@ class Tbx {
             if (name.endsWith('[]')) {
                 name = name.substr(0, name.length - 2);
                 if (!parent[name]) {
-                    parent[name] = [];
+                    parent[name] = new TbxGroupComponent;
                 }
                 parent[name].push(component);
             } else {
