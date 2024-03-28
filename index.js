@@ -63,8 +63,8 @@ class Tbx {
         }
 
         // Ищем UI vars
-        this.recursiveMap("[bind]", element, (el) => {
-            let bindVarName = el.getAttribute('bind');
+        this.recursiveMap("[data-tbx-bind]", element, (el) => {
+            let bindVarName = el.getAttribute('data-tbx-bind');
             // console.log(component, el, name, bindVarName);
 
             Object.defineProperty(component, bindVarName, {
@@ -77,7 +77,7 @@ class Tbx {
             });
 
             el.setAttribute('binded', bindVarName)
-            el.removeAttribute('bind', true)
+            el.removeAttribute('data-tbx-bind', true)
         });
 
         // Attrs bind
@@ -86,9 +86,9 @@ class Tbx {
             let att = atts[i];
 
             let value = att.nodeValue;
-            if (att.nodeName.startsWith(':')) {
+            if (att.nodeName.startsWith('data-tbx-var-')) {
                 // console.log(att, component, att.nodeName.substr(1), value);
-                Object.defineProperty(component, att.nodeName.substr(1), {
+                Object.defineProperty(component, att.nodeName.substr(13), {
                     get: () => {
                         return value;
                     },
