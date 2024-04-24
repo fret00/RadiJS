@@ -22,6 +22,11 @@ export class ErrorBag extends TbxComponent {
     }
 
     show(msg = 'default') {
+        // Если текст ошибки пуст, то берем стандартную ошибку
+        if (msg == '') {
+            msg = 'default';
+        }
+        
         console.log("Show error", msg);
         if (typeof msg === 'object') {
             let converted = '';
@@ -40,10 +45,7 @@ export class ErrorBag extends TbxComponent {
 
         msg = this.lookupLocaleTranslation(msg);
 
-        // Если текст ошибки пуст, то берем стандартную ошибку
-        if (msg == '') {
-            msg = this.lookupLocaleTranslation('default');
-        }
+        
 
         this.text = msg;
 
