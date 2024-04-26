@@ -46,8 +46,9 @@ export class ErrorBag extends TbxComponent {
         msg = this.lookupLocaleTranslation(msg);
 
         
-
-        this.text = msg;
+        if (msg != 'default') {
+            this.text = msg;
+        }
 
         if (this.hideTimeout > 0) {
             setTimeout(() => {
