@@ -1,12 +1,14 @@
 import sanitizeHtml from 'sanitize-html';
-import ui from '.';
+// import tbx from '.';
 
 export default class TbxComponent {
-    constructor(element) {
+    constructor(element, tbx = null) {
         if (!element) {
             console.error("Element cannot be null");
         }
         this.element = element;
+
+        this.tbx = tbx;
     }
 
     requireComponents(reqs, throwError = true) {
@@ -23,7 +25,7 @@ export default class TbxComponent {
             } else {
                 scope = this.element;
             }
-            let initializedComponents = ui.createComponents(selector, scope, this, 1);
+            let initializedComponents = this.tbx.createComponents(selector, scope, this, 1);
             if (initializedComponents.length > 1) {
                 console.log("Found more than 1 component for selector", selector);
             }
@@ -104,7 +106,7 @@ export default class TbxComponent {
             return this;
         }
     }
-    
+
     prop(name) {
         return this.element[name];
     }

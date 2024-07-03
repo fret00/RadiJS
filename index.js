@@ -1,10 +1,12 @@
-import components from "./components/index.js";
 import TbxComponent from "./component";
+// import components from "./components/index.js";
 import TbxGroupComponent from "./group.js";
 
 let initializedComponents = {};
 let initializedComponentsIndex = 0;
 let initQueue = [];
+
+let components = [];
 
 class Tbx {
     getComponentClass(element) {
@@ -32,7 +34,7 @@ class Tbx {
 
         let name = element.getAttribute('data-tbx-name');
         let componentClass = this.getComponentClass(element);
-        let component = new componentClass(element);
+        let component = new componentClass(element, this);
         component.uid = 'uid_' + initializedComponentsIndex++;
         initializedComponents[component.uid] = component;
         if (name) {
@@ -122,8 +124,8 @@ class Tbx {
         }, maxLevel);
 
         return initialized;
-        
-    }  
+
+    }
 
     /**
      * Инициализирует компоненты которые должны быть инициализированы автоматически
@@ -154,7 +156,7 @@ class Tbx {
             if (element.matches(selector)) {
                 callback(element);
             }
-            
+
             this.recursiveMap(selector, element, callback, (maxLevel)?maxLevel--:null);
         }
 
